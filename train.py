@@ -86,7 +86,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     with open(args.model_cfg, 'r') as stream:
-        global_hparams = Box.from_yaml(stream)
+        global_hparams = Box.from_yaml(''.join(stream.readlines()))
 
     if args.nowandb:
         global_hparams.wandb_use = False

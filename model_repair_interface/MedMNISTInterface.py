@@ -28,7 +28,7 @@ class MedMNISTInterface(AbstractInterface):
         SumAgg(disable=True)
 
         with open(self.int_cfg["cfg_path"], 'r') as stream:
-            self.cfg = Box.from_yaml(stream)
+            self.cfg = Box.from_yaml(''.join(stream.readlines()))
 
         self.loss_f = Loss(self.cfg)
 

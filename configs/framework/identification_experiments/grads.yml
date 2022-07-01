@@ -4,18 +4,18 @@ pipeline:
 
 override: # Override to allow the public version to run
   model_cfg: "configs/model/bp_mnist_model.yml"
-  model_path: "cached/trained_models/original"
+  model_path: "cached/trained_models/dev/dev_binary_pathmnist_0.40test"
 
 trigger_extract:
-  version: 300 # Increment when need to force recompute
+  version: 1314 # Increment when need to force recompute
 
   interface: model_repair_interface.MedMNISTInterface.MedMNISTInterface
   interface_cfg:
     cfg_path: "/nas_share/97_Personal/thomas/exps_out/model_repair/model_repair_classifier/dev/winter-sun-40_dev_binary_pathmnist_0.40test/cfg.yml"
-  epochs: [300]
+  epochs: [1314]
 
   max_checkpoints: 2 # Will remove first ones first
-  ref_epoch: 300 # Deployed model epoch
+  ref_epoch: 1314 # Deployed model epoch
   stride: 4
 
   extract_checkpoint:
@@ -104,7 +104,7 @@ trigger_finetune:
     weight_decay: 0.001
   
   get_another_epoch:
-    other_epoch: 50
+    other_epoch: 1314
 
   inference_on_whole_set:
     version: 2 # Increment when need to force recompute
